@@ -1,0 +1,27 @@
+{
+  "name": "الناظر — El Nazer",
+  "short_name": "الناظر",
+  "description": "صفحة التحميل الرسمية لتطبيق الناظر لأندرويد وويندوز.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080D0B",
+  "theme_color": "#0B0F0E",
+  "categories": ["finance", "productivity", "lifestyle"],
+  "icons": [
+    {
+      "src": "./assets/brand/elnazer-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/brand/app_icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
