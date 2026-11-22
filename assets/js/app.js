@@ -50,7 +50,7 @@
     function applyTheme(theme, persist) {
       root.setAttribute("data-theme", theme);
       if (themeColor) {
-        themeColor.setAttribute("content", theme === "light" ? "#F4EDE2" : "#0B0F0E");
+        themeColor.setAttribute("content", theme === "light" ? "#F6EFE1" : "#101B16");
       }
       if (themeToggle) {
         var isLight = theme === "light";
@@ -106,12 +106,27 @@
     var menuToggle = $("#menuToggle");
     var mobileMenu = $("#mobileMenu");
 
+    var menuScrollY = 0;
+
     function setMenu(open) {
       if (!menuToggle || !mobileMenu) return;
+      var wasOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      if (open === wasOpen) return;
       menuToggle.setAttribute("aria-expanded", String(open));
       menuToggle.setAttribute("aria-label", open ? "إغلاق القائمة" : "فتح القائمة");
       mobileMenu.hidden = !open;
       document.body.classList.toggle("menu-open", open);
+      if (open) {
+        menuScrollY = window.scrollY || window.pageYOffset;
+        document.body.style.position = "fixed";
+        document.body.style.top = "-" + menuScrollY + "px";
+        document.body.style.width = "100%";
+      } else {
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        window.scrollTo(0, menuScrollY);
+      }
     }
 
     if (menuToggle && mobileMenu) {
@@ -146,6 +161,7 @@
         },
         { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
       );
+      root.classList.add("reveal-ready");
       revealItems.forEach(function (item) {
         revealObserver.observe(item);
       });
