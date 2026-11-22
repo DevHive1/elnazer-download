@@ -99,7 +99,7 @@
 
     if (backToTop) {
       backToTop.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: "auto" });
       });
     }
 
@@ -149,27 +149,10 @@
       });
     }
 
-    var revealItems = $$(".reveal");
-    if ("IntersectionObserver" in window) {
-      var revealObserver = new IntersectionObserver(
-        function (entries, observer) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          });
-        },
-        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-      );
-      root.classList.add("reveal-ready");
-      revealItems.forEach(function (item) {
-        revealObserver.observe(item);
-      });
-    } else {
-      revealItems.forEach(function (item) {
-        item.classList.add("visible");
-      });
-    }
+    // Keep the whole page readable without scroll-triggered reveal effects.
+    $$(".reveal").forEach(function (item) {
+      item.classList.add("visible");
+    });
 
     var tabs = $$(".preview-tab");
     var panels = $$(".preview-panel");
@@ -336,7 +319,7 @@
     if (verifyJump) {
       verifyJump.addEventListener("click", function () {
         var target = $("#security");
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (target) target.scrollIntoView({ behavior: "auto", block: "start" });
       });
     }
 

@@ -3,21 +3,21 @@
   src: url("../fonts/Amiri-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }
 @font-face {
   font-family: "Amiri";
   src: url("../fonts/Amiri-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }
 @font-face {
   font-family: "Marcellus";
   src: url("../fonts/Marcellus-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }
 
 :root,
@@ -662,6 +662,7 @@ html.reveal-ready .reveal.visible {
   }
 
   .mobile-menu {
+    max-height: calc(100vh - 68px);
     max-height: calc(100svh - 68px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
     background: var(--header-bg);
@@ -716,5 +717,64 @@ html.reveal-ready .reveal.visible {
   .float-card {
     animation: none !important;
     transform: none !important;
+  }
+}
+
+/* Keep content stable and readable on older mobile browsers. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  scroll-behavior: auto;
+  overflow-x: hidden;
+}
+
+.final-cta::before {
+  filter: none;
+}
+
+html .reveal,
+html.reveal-ready .reveal,
+html.reveal-ready .reveal.visible,
+html .reveal.visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.hero-glow,
+.hero-mashrabiya {
+  display: none;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+@media (max-width: 960px) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .phone,
+  .arch-ring,
+  .float-card,
+  .security-glow,
+  .download-mashrabiya,
+  .final-mashrabiya {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .hero-glow,
+  .hero-mashrabiya {
+    display: none !important;
   }
 }
