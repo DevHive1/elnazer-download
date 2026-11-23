@@ -1,6 +1,6 @@
 # El Nazer download landing page
 
-Static Arabic-first download page for El Nazer 0.2.3. No build step, no PHP, no database.
+Static Arabic-first download page for El Nazer 0.2.5. No build step, no PHP, no database.
 
 ## Publish on Hostinger
 
