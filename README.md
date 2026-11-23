@@ -28,7 +28,9 @@ https://devhive1.github.io/elnazer-download/
 
 ## Updating a release
 
-When a new release is published, update these values:
+When a matching release is published, `.github/workflows/sync-release-metadata.yml`
+downloads its assets, updates these values in the source repository, and publishes the
+landing page to `DevHive1/elnazer-download`:
 
 - `index.html`: version badges, file sizes, SHA-256 hashes, release date, download URLs.
 - `assets/js/app.js`: the `androidUrl`, `armv7Url`, and `windowsUrl` constants used by
